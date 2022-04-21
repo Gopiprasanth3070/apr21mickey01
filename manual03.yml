@@ -1,0 +1,39 @@
+name: simple workflow
+on:
+ workflow_dispatch
+	
+
+DEV:
+ runs-on: ubuntu-latest
+ environment: DEV
+	
+ steps:
+ - uses: actions/checkout@v2
+ - name: Run a script
+   run: |
+    echo "I am running JOB in DEV"
+		    
+QA:
+ runs-on: ubuntu-latest
+ environment: QA
+ needs: DEV
+	
+ steps:
+ - uses: actions/checkout@v2
+		
+ - name: Run a script
+   run: |
+    echo "I am running JOB in QA"
+
+
+PROD:
+ runs-on: ubuntu-latest
+ environment: PROD
+ needs: QA
+	
+ steps:
+ - uses: actions/checkout@v2
+ 		
+ - name: Run a script
+   run: |
+    echo "I am running JOB in PROD"
