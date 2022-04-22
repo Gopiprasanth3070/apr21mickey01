@@ -1,0 +1,27 @@
+name: Demo 5
+
+on:
+  workflow_dispatch:    
+
+jobs:
+  
+  dev:
+    runs-on: ubuntu-latest
+    environment: DEV
+    steps:
+    - name: job1
+      run: echo "DEV - Hello"
+      
+  test:
+    runs-on: ubuntu-latest
+    environment: TEST
+    steps:
+    - name: job2
+      run: echo "TEST - Hello"
+      
+  prod:
+    runs-on: ubuntu-latest
+    environment: PROD
+    steps:
+    - name: job3
+      run: echo "PROD - Hello"
