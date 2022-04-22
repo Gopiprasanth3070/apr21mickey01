@@ -20,48 +20,36 @@ jobs:
   job1:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    environment: DEMO_DEV
+    environment: DEV
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Job 1 - Hello ${{ github.event.inputs.name }}"
+    - name: dev
+      run: echo "DEV - Hello"
       
   job2:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    environment: DEMO_QA
+    environment: TEST
     needs:
       - job1
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Job 2 - Hello ${{ github.event.inputs.name }}"
+    - name: test
+      run: echo "TEST - Hello"
       
   job3:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    environment: PROD
     needs:
       - job2
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Job 3 - Hello ${{ github.event.inputs.name }}"
-      
-  job4:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    environment: DEMO_PROD
-    needs:
-      - job2
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Job 4 - Hello ${{ github.event.inputs.name }}"
+    - name: prod
+      run: echo "PROD - Hello"
