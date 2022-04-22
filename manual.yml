@@ -1,6 +1,6 @@
 name: simple workflow
 on:
-	workflow_dispatch
+	workflow_dispatch:
 	
 
 DEV:
