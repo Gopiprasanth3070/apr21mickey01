@@ -1,7 +1,6 @@
 name: simple workflow
 on:
  workflow_dispatch:
-	
 
 DEV:
  runs-on: ubuntu-latest
@@ -36,6 +35,3 @@ PROD:
  - name: Run a script
    run: |
     echo "I am running JOB in PROD"
-	
-	
-	
