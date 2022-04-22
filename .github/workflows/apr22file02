@@ -1,0 +1,32 @@
+name: Multiple Environment Demo 2
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'environment'
+        required: true
+        
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    environment: DEV
+    
+    steps:
+    - name: job01
+      run: echo ${{ env.MY_VARIABLE }}
+      
+ job2:
+   runs-on: ubuntu-latest
+   environment: DEMO_QA
+   needs:
+     - job1
+     
+   steps:
+   - name: job02
+      run: echo "Job 2 - Hello ${{ github.event.inputs.name }}"
+      
+      
+      
+  
+
